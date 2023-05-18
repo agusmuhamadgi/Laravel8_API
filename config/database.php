@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mongodb'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -36,10 +36,17 @@ return [
     'connections' => [
 
         'mongodb' => [
-            'driver' => 'mongodb',
-            'dsn' => env('DB_URI','mongodb://localhost:27017'),
-            'database' => env('DATABASE_URL'),
+            'driver'   => 'mongodb',
+            'host'     => env('DB_HOST', 'localhost'),
+            'port'     => env('DB_PORT', 27017),
+            'database' => env('DB_DATABASE', 'Laravel8'),
+            'username' => env('DB_USERNAME', ''),
+            'password' => env('DB_PASSWORD', ''),
+            'options'  => [
+                'database' => env('DB_AUTHENTICATION_DATABASE', 'admin'),
+            ],
         ],
+        
 
         'sqlite' => [
             'driver' => 'sqlite',
